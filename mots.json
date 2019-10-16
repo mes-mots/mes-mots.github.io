@@ -1,0 +1,47 @@
+{
+
+    "nodes":[
+        {"id": "mom", "group": 1},
+        {"id": "a", "group": 1},
+        {"id": "loves", "group": 1},
+        {"id": "her daughter", "group": 1}, 
+
+        {"id": "All in green", "group": 2},
+        {"id": "my love riding", "group": 2},
+
+        {"id": "on a great horse of gold", "group": 3},
+
+        {"id": "into the silver dawn", "group": 4},
+
+        {"id": "four lean hounds", "group": 5},
+
+        {"id": "crouched low and smiling", "group": 6},
+        {"id": "Mohamed Ouf", "group": 6},
+
+        {"id": "the merry deer ran before", "group": 7},
+                {"id": "the red rare deer.", "group": 7}
+
+    ], 
+
+    "links": [       
+    {"source": "mom", "target": "a", "value": 1},
+    {"source": "mom", "target": "loves", "value": 1},
+    {"source": "mom", "target": "her daughter", "value": 1},
+
+    {"source": "All in green", "target": "loves", "value": 2},
+    {"source": "All in green", "target": "my love riding", "value": 2},
+
+    {"source": "on a great horse of gold", "target": "my love riding", "value": 3},
+
+    {"source": "into the silver dawn", "target": "my love riding", "value": 4},
+
+    {"source": "four lean hounds", "target": "her daughter", "value": 5},
+
+    {"source": "crouched low and smiling", "target": "Mohamed Ouf", "value": 6},
+
+    {"source": "the merry deer ran before", "target": "the red rare deer.", "value": 7}
+
+  ]
+}
+
+
