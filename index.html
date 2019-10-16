@@ -36,18 +36,18 @@
   (document.getElementById('graph'))
 
 
-  .backgroundColor('#E1E1E1')
+  .backgroundColor('#CEF7D8')
   .graphData(data)
   .nodeId('id')
   .linkColor(() => 'rgba(42,149,138,0.9)')
   .nodeAutoColorBy('id')
   .nodeCanvasObject((node, ctx, globalScale) => {
   const label = node.id;
-  const fontSize = 8;
+  const fontSize = 10;
   ctx.font = `${fontSize}px Inconsolata`;
   const textWidth = ctx.measureText(label).width;
   const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize - 0.5); // some padding
-  ctx.fillStyle = 'rgba(225, 225, 225, 1)';
+  ctx.fillStyle = 'rgba(206, 247, 216, 1)';
   ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
