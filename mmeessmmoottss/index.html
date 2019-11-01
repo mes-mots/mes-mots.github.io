@@ -1,64 +1,62 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>hola</title>
-    <script src="libraries/p5.js" type="text/javascript"></script>
-    <script src="libraries/p5.dom.js" type="text/javascript"></script>
-    <!--
-    <script src="libraries/p5.sound.js" type="text/javascript"></script>
-    -->
-    <script src="sketch.js" type="text/javascript"></script>
+<html lang="French">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes mots</title>
+    <script src="p5.min.js"></script>
+    <script src="word.js"></script>
+    <script src="sketch.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <style>
     html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Source Code Pro', monospace;
-
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Code Pro', monospace;
     }
     canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 0;
     }
     sub1 {
-    background-color: rgba(255,0,170,0.35);
+        background-color: rgba(255, 0, 170, 0.35);
     }
     #content {
-    height: 100%;
-    margin: 0 0 0 0;
-    border-top: 0px solid transparent;
+        height: 100%;
+        margin: 0 0 0 0;
+        border-top: 0px solid transparent;
     }
     #idioma {
-    margin-top: 50px;
-    margin-left: 72%;
+        margin-top: 50px;
+        margin-left: 72%;
     }
     #contenu {
-    position: relative;
-    z-index: 2;
-    margin-top: 0px !important;
-    margin-left: 0px;
+        position: relative;
+        z-index: 2;
+        margin-top: 0px !important;
+        margin-left: 0px;
     }
     .container {
-    margin-top: 24.2px !important;
-    margin-left: 0px !important;
-    margin-top: 0px !important;
+        margin-top: 24.2px !important;
+        margin-left: 0px !important;
+        margin-top: 0px !important;
     }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id='contenu'>
-      
-      <p style = "padding: 20px;">
-        mot: <input id = "word">
-        <br>        <br>
-        <!--score: <input id = "score">
-        <br>        <br>
--->
-        <button id = "submit">Soumettre</button>
-      </p>
+        <p style="padding: 20px;">
+            mot:
+            <input id="word">
+            <br>
+            <br>
+            <button id="submit">Soumettre</button>
+        </p>
     </div>
-  </body>
+</body>
+
 </html>
