@@ -1,8 +1,20 @@
+var looping = false;
+
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth, windowHeight, SVG);
     background(204, 247, 213);
-    var button = select('#submit');
-    button.mousePressed(submitWord);
+    var submitButton = select('#submit');
+    submitButton.mousePressed(submitWord);
+    var textInput = window.document.getElementById("word");
+    textInput.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            submitWord();
+            redraw();
+        }
+    });
+    var saveButton = select('#save-sketch');
+    saveButton.mousePressed(saveSketch);
     textFont("Source Code Pro");
     textSize(30);
     // Creating many words to test
@@ -24,6 +36,7 @@ function setup() {
 }
 
 function draw() {
+    clear();
     background(204, 247, 213);
     for (var i = 0; i < words.length; i++) {
         var w = words[i];
@@ -40,9 +53,12 @@ function draw() {
         fill(w.textColor.r, w.textColor.g, w.textColor.b);
         text(words[i].text, x + px, y + 30);
     }
+
 }
 
 function mousePressed() {
+    looping = true;
+    loop();
     for (var i = 0; i < words.length; i++) {
         var w = words[i];
         w.detectMouse(mouseX, mouseY);
@@ -50,6 +66,8 @@ function mousePressed() {
 }
 
 function mouseReleased() {
+    looping = false;
+    noLoop();
     for (var i = 0; i < words.length; i++) {
         var w = words[i];
         w.detecting = false;
@@ -64,6 +82,9 @@ function submitWord() {
     var word = new Word(text, random(width - w), random(height * 0.95), random([0, 1, 2, 3, 4]));
 }
 
+function saveSketch() {
+    save();
+}
 
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);

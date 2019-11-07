@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes mots</title>
     <script src="p5.min.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.svg.js"></script>
     <script src="word.js"></script>
     <script src="sketch.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
@@ -14,8 +16,21 @@
         margin: 0;
         padding: 0;
         font-family: 'Source Code Pro', monospace;
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Safari */
+        -khtml-user-select: none;
+        /* Konqueror HTML */
+        -moz-user-select: none;
+        /* Old versions of Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
     }
-    canvas {
+    canvas, #defaultCanvas0 {
         position: fixed;
         top: 0;
         left: 0;
@@ -54,7 +69,8 @@
             <input id="word">
             <br>
             <br>
-            <button id="submit">Soumettre</button>
+            <button id="submit">Ajouter un mot</button>
+            <button id="save-sketch">Télécharger en .SVG</button>
         </p>
     </div>
 </body>
