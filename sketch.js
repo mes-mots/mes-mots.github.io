@@ -1,7 +1,11 @@
 var looping = false;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight, SVG);
+
+
+
+
+    createCanvas(windowWidth, windowHeight-100, SVG);
     background(204, 247, 213);
     var submitButton = select('#submit');
     submitButton.mousePressed(submitWord);
