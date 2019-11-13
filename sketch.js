@@ -25,13 +25,16 @@ function setup() {
     //     let w = (px * 2) + l * 18;
     //     var word = new Word(text, random(width - w), random(height * 0.95), random([0, 1, 2, 3, 4]));
     // }
-    var dormir = new Word("Dormir", 300, 100, 0);
-    var sur = new Word("sur", 300 + 160, 100, 4);
-    var la = new Word("la", 300 + 160 + 105, 100, 4);
-    var colere = new Word("Colère", 300, 100 + 50, 3);
-    var de = new Word("de", 300 + 160, 100 + 50, 4);
-    var ma = new Word("ma", 300 + 160 + 87, 100 + 50, 4);
-    var voisine = new Word("Voisine", 300, 100 + 50 + 50, 2);
+    
+    // These vars are for starting a default phrase.-
+
+    // var dormir = new Word("Dormir", 300, 100, 0);
+    // var sur = new Word("sur", 300 + 160, 100, 4);
+    // var la = new Word("la", 300 + 160 + 105, 100, 4);
+    // var colere = new Word("Colère", 300, 100 + 50, 3);
+    // var de = new Word("de", 300 + 160, 100 + 50, 4);
+    // var ma = new Word("ma", 300 + 160 + 87, 100 + 50, 4);
+    // var voisine = new Word("Voisine", 300, 100 + 50 + 50, 2);
     noStroke();
 }
 
