@@ -1,91 +1,94 @@
 <!DOCTYPE html>
-<html lang="French">
-  <head>
+<html lang="">
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes mots</title>
-    <script src="p5.min.js"></script>
-    <script src="p5.dom.min.js"></script>
-    <script src="p5.svg.js"></script>
-    <script src="word.js"></script>
-    <!--<script src="sketch.js"></script>-->
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <title>p5.js example</title>
     <style>
-    html, body {
-    margin: 0;
-        font-family:Futura, arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background:#ccf7d5;
-    padding: 0;
-    font-family: 'Source Code Pro', monospace;
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Old versions of Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently
-    supported by Chrome, Opera and Firefox */
-    @font-face {
-    font-family: Futura;
-    src: url("inc/fonts/futura.otf");
-    }
-    @font-face {
-    font-family: Futura;
-    src: url("inc/fonts/futura_bold.otf");
-    font-weight: bold;
-    }
-    @font-face {
-    font-family: Futura;
-    src: url("inc/fonts/futura_light.otf");
-    font-weight: 100;
+    body {
+        padding: 0;
+        margin: 0;
     }
 
-    canvas {
-    display: block;
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden
     }
-    .container-fluid { padding-right: 0px; padding-left: 0px; }
-    header { position:relative; padding-top:60px; padding-left:40px; transition: all 1s; opacity:0; }
-    header h1 { font-size:41px; color:#945043; font-weight:bold; line-height:100%; position:relative; /*-webkit-text-stroke: 1px #FFF9EE;*/ display:inline-block; }
-    header h1 .normal { font-weight:100; font-style:italic; -webkit-text-stroke: 0px #FFF9EE; }
-    header h2 { font-size:26px; color:#DE9042; font-weight:bold; line-height:100%; position:relative; top:0px; /*-webkit-text-stroke: 1px #FFF9EE;*/ }
-    header p { position:absolute; right:60px; top:60px; width:200px; font-size:14px; padding-bottom:20px; }
-    footer { position:absolute; left:40px; bottom:0px; transition: all 1s; opacity:0; }
-    footer h1 { font-size:120px; color:#A2B1B1; font-weight:bold; opacity:0.43; display:inline-block; }
-    .text-red { color:#945043; }
-    .page { position:absolute; /*top:0px;*/ opacity:0; transition:1.25s; }
-    #p5_loading { text-align:center; display:block; width:100%; top:50%; margin-top:-17px; margin-top:-75px; position:absolute; }
-    @media (max-width: 1024px) {
-    header p { display:none; }
+    svg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+    #add-words {
+        /*display: block;*/
+        z-index: 20;
+        /*display: inline-block;*/
+        margin: 2em;
+    }
+    #svgcontainer {
+        z-index: -1;
+    }
+    input {
+        position: fixed;
+        top: 0px;
+        border: 0px solid #ccc;
+        background: white;
+        font-family: monospace;
+        padding: 7px 10px;
+        font-size: 18px;
+        margin: 20px 10px 20px 0;
+        /*color: black;*/
+        color: #38A56F;
+        z-index: 50;
+        font-family: "Source Code Pro";
+    }
+    input:focus {
+        /*background-color: yellow;*/
+        outline: none;
+    }
+
+    #submit {
+        left: 20px;
+        top: 50px;
+    }
+    #save-svg {
+        left: 205px;
+        top: 50px;
+    }
+    #word {
+        left: 20px;
     }
     </style>
-  </head>
-  <body>
-    <script src="sketch.js"></script>
-<!--
-    <div id="p5_loading">
-      <div class="spinner-border text-red" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>-->
-    <div class="container-fluid">
-      <header>
-        <p style="padding: 20px;">
-          mot:
-          <input id="word">
-          <br>
-          <br>
-          <button id="submit">Ajouter un mot</button>
-          <button id="save-sketch">Télécharger en .SVG</button>
-        </p>
-        
-      </header>
+    <!-- <script src="snap.svg-min.js"></script> -->
+    <!-- <script src="svg.min.js"></script> -->
+    <!-- <script src="svg.draggable.min.js"></script> -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="FileSaver.min.js" charset="utf-8"></script>
+    <!-- <script src="https://d3js.org/d3-dispatch.v1.min.js"></script> -->
+    <!-- <script src="https://d3js.org/d3-selection.v1.min.js"></script> -->
+    <!-- <script src="https://d3js.org/d3-drag.v1.min.js"></script> -->
+    <script src="sketch3.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- <input type="text" id="add-words" spellcheck="false" /> -->
+    <div id="svgcontainer">
     </div>
-  </body>
+    <form name="myform" id="newword" autocomplete="off" method="post">
+        <input autocomplete="false" name="hidden" type="text" style="display:none;">
+        <input type="text" id="word" placeholder="Écrivez un mot &hellip;" spellcheck="false">
+        <input name="Submit" id="submit" type="submit" value="Ajouter un mot">
+        <input name="Submit" id="save-svg" type="button" value="Télécharger en .SVG">
+    </form>
+    <!-- <svg id="maboite" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" onload="makeDraggable(evt)"> -->
+    <!-- <svg id="maboite" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%"> -->
+    <!-- </svg> -->
+</body>
+
 </html>
