@@ -90,6 +90,7 @@ window.onload = function() {
     function handleForm(event) {
         var wo = document.getElementById("word").value;
         updateData(wo);
+        document.getElementById("word").value = "";
         event.preventDefault();
     }
     form.addEventListener('submit', handleForm);
