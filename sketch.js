@@ -28,10 +28,12 @@ window.onload = function() {
         .attr("height", height)
         .attr("z-index", "1");
 
-    svg.append("rect")
-        .attr("width", "100%")
-        .attr("height", "100%")
-        .attr("fill", "#D1F7D5");
+    // This is commented out to remove the SVG background.
+    // Now, the background is defined in the CSS body element.
+    // svg.append("rect")
+    //     .attr("width", "100%")
+    //     .attr("height", "100%")
+    //     .attr("fill", "#D1F7D5");
 
     var words = svg.selectAll("g")
         .data(dataSet)
@@ -79,6 +81,10 @@ window.onload = function() {
             var w = { word: word, pos: [newX, newY], col: col };
             dataSet.push(w);
             words = svg.selectAll("g").data(dataSet);
+            // The next two lines fix the endless duplication of
+            // text and rectangle objects within groups.
+            svg.selectAll("g text").remove();
+            svg.selectAll("g rect").remove();
             words.exit().remove();
             words.enter().append("g");
             setWords();
