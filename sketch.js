@@ -159,8 +159,34 @@ function writeDownloadLink() {
         .attr("version", 1.1)
         .attr("xmlns", "http://www.w3.org/2000/svg")
         .node().parentNode.innerHTML;
-    var blob = new Blob([html], { type: "image/svg+xml" });
-    saveAs(blob, "mes-mots.svg");
+
+    TextToSVG.load('https://cdn.jsdelivr.net/npm/source-code-pro@2.30.2/OTF/SourceCodePro-Medium.otf', function(err, textToSVG) {
+        html = html.replace(/(<text dx=)(.*?)(<\/text>)/g, function(a, b, c) {
+            let color;
+            c.replace(/("fill: )(.*?)(;)/, function(aa, bb, cc) {
+                color = cc;
+            });
+            let text;
+            c.replace(/(default;">)(.*)/, function(aa, bb, cc) {
+                text = cc;
+            });
+            var svg = textToSVG.getSVG(text, {
+                x: 14,
+                y: 32,
+                fontSize: 32,
+                attributes: {
+                    fill: color
+                }
+            });
+            var svgPath;
+            svg = svg.replace(/(<path fill=")(.*)(\/>)/g, function(aa) {
+                svgPath = aa;
+            });
+            return svgPath;
+        });
+        var blob = new Blob([html], { type: "image/svg+xml" });
+        saveAs(blob, "mes-mots.svg");
+    });
 };
 
 var colorList = [
